@@ -1,0 +1,380 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PurpleKingdomGamesCore</name>
+    </assembly>
+    <members>
+        <member name="T:PurpleKingdomGames.Core.Collections.BinaryHeap`1">
+            <summary>
+            A binary heap implementation for any types that extend IComparable
+            </summary>
+            <typeparam name="T">Any type that extends IComparable</typeparam>
+        </member>
+        <member name="P:PurpleKingdomGames.Core.Collections.BinaryHeap`1.Count">
+            <summary>
+            The number of items on the heap
+            </summary>
+        </member>
+        <member name="M:PurpleKingdomGames.Core.Collections.BinaryHeap`1.Add(`0)">
+            <summary>
+            Add a single item to the heap
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:PurpleKingdomGames.Core.Collections.BinaryHeap`1.Remove">
+            <summary>
+            Get the lowest value from the top of the heap
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PurpleKingdomGames.Core.Collections.BinaryHeap`1.Sort(System.Int32)">
+            <summary>
+            Resort the heap from the specified index. Used when an items value changes
+            </summary>
+            <param name="index">The index of the item that changed value</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">If the index is out of range</exception>
+        </member>
+        <member name="M:PurpleKingdomGames.Core.Collections.BinaryHeap`1.IndexOf(`0)">
+            <summary>
+            Gets the index of the specified item in the heap
+            </summary>
+            <param name="item">The item to search for</param>
+            <returns>Returns zero or more on success. -1 on failure</returns>
+        </member>
+        <member name="M:PurpleKingdomGames.Core.Collections.BinaryHeap`1.SortAfterRemoval">
+            <summary>
+            Resort the heap
+            </summary>
+        </member>
+        <member name="T:PurpleKingdomGames.Core.Pathfinding.GridNode2D">
+            <summary>
+            Stores a node on a grid with a location in world space, penalty, and whether it's passable
+            </summary>
+        </member>
+        <member name="F:PurpleKingdomGames.Core.Pathfinding.GridNode2D.Position">
+            <summary>
+            Get the position of this node in world space
+            </summary>
+        </member>
+        <member name="P:PurpleKingdomGames.Core.Pathfinding.GridNode2D.Passable">
+            <summary>
+            Whether or not a path can cross through this node
+            </summary>
+        </member>
+        <member name="P:PurpleKingdomGames.Core.Pathfinding.GridNode2D.Penalty">
+            <summary>
+            The penalty for passing through this node
+            </summary>
+        </member>
+        <member name="M:PurpleKingdomGames.Core.Pathfinding.GridNode2D.#ctor(PurpleKingdomGames.Core.Point2D)">
+            <summary>
+            Create a new grid node
+            </summary>
+            <param name="position">The position in world space</param>
+        </member>
+        <member name="M:PurpleKingdomGames.Core.Pathfinding.GridNode2D.ToGridNodeCalc2D">
+            <summary>
+            Convert a grid node to an internal calculated grid node (used for pathfinding)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:PurpleKingdomGames.Core.Pathfinding.Internal.GridNodeCalc2D">
+            <summary>
+            Internal class used for storing movement costs when pathfinding
+            </summary>
+        </member>
+        <member name="F:PurpleKingdomGames.Core.Pathfinding.Internal.GridNodeCalc2D.ReferenceNode">
+            <summary>
+            The node that this uses for reference
+            </summary>
+        </member>
+        <member name="P:PurpleKingdomGames.Core.Pathfinding.Internal.GridNodeCalc2D.MovementCost">
+            <summary>
+            The cost of moving to this node from the parent
+            </summary>
+        </member>
+        <member name="P:PurpleKingdomGames.Core.Pathfinding.Internal.GridNodeCalc2D.HeuristicCost">
+            <summary>
+            The calculated Heuristic cost of moving to this node
+            </summary>
+        </member>
+        <member name="P:PurpleKingdomGames.Core.Pathfinding.Internal.GridNodeCalc2D.GridPosition">
+            <summary>
+            The position of this node on the grid
+            </summary>
+        </member>
+        <member name="P:PurpleKingdomGames.Core.Pathfinding.Internal.GridNodeCalc2D.Parent">
+            <summary>
+            The parent of this node
+            </summary>
+        </member>
+        <member name="P:PurpleKingdomGames.Core.Pathfinding.Internal.GridNodeCalc2D.TotalCost">
+            <summary>
+            Calculated total cost
+            </summary>
+        </member>
+        <member name="M:PurpleKingdomGames.Core.Pathfinding.Internal.GridNodeCalc2D.#ctor(PurpleKingdomGames.Core.Pathfinding.GridNode2D)">
+            <summary>
+            Creates a new calculated node, using the reference
+            </summary>
+            <param name="referenceNode"></param>
+        </member>
+        <member name="M:PurpleKingdomGames.Core.Pathfinding.Internal.GridNodeCalc2D.CompareTo(System.Object)">
+            <summary>
+            Compares 2 calculated nodes to see if the totals are bigger or smaller.
+            When compared to anything that is not a calculated node this method will return zero
+            </summary>
+            <param name="obj">The object to compare</param>
+            <returns>
+            The total cost of this node, minus that of the comparison node.
+            Zero if comparison is not a GridNodeCalc2D object
+            </returns>
+        </member>
+        <member name="T:PurpleKingdomGames.Core.Pathfinding.Seekers.AStar">
+            <summary>
+            Contains methods for seeking a target within a specified grid using the A* pathfind algorithm
+            </summary>
+        </member>
+        <member name="F:PurpleKingdomGames.Core.Pathfinding.Seekers.AStar.DEFAULT_MOVEMENTCOST">
+            <summary>
+            The default movement cost when not supplied
+            </summary>
+        </member>
+        <member name="F:PurpleKingdomGames.Core.Pathfinding.Seekers.AStar.DEFAULT_DIAGONALCOST">
+            <summary>
+            The default diagonal movement cost when not supplied
+            </summary>
+        </member>
+        <member name="F:PurpleKingdomGames.Core.Pathfinding.Seekers.AStar.DEFAULT_ASCENTCOST">
+            <summary>
+            The default additional ascent cost, when not supplied
+            </summary>
+        </member>
+        <member name="F:PurpleKingdomGames.Core.Pathfinding.Seekers.AStar.DEFAULT_DESCENTCOST">
+            <summary>
+            The default additional descent cost, when not supplied
+            </summary>
+        </member>
+        <member name="M:PurpleKingdomGames.Core.Pathfinding.Seekers.AStar.Seek(PurpleKingdomGames.Core.Pathfinding.GridNode2D[0:,0:],PurpleKingdomGames.Core.Point2D,PurpleKingdomGames.Core.Point2D)">
+            <summary>
+            Seek a target in a 2-dimensional grid
+            </summary>
+            <param name="grid">The grid to search</param>
+            <param name="start">The start point to seek from</param>
+            <param name="target">The target to seek to</param>
+            <returns>An array of points needed to pass through to get to the target</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            If the start or target are out of range of the grid
+            </exception>
+        </member>
+        <member name="M:PurpleKingdomGames.Core.Pathfinding.Seekers.AStar.Seek(PurpleKingdomGames.Core.Pathfinding.GridNode2D[0:,0:],PurpleKingdomGames.Core.Point2D,PurpleKingdomGames.Core.Point2D,System.Boolean)">
+            <summary>
+            Seek a target in a 2-dimensional grid
+            </summary>
+            <param name="grid">The grid to search</param>
+            <param name="start">The start point to seek from</param>
+            <param name="target">The target to seek to</param>
+            <param name="cutCorners">Whether or not to cut a corner</param>
+            <returns>An array of points needed to pass through to get to the target</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            If the start or target are out of range of the grid
+            </exception>
+        </member>
+        <member name="M:PurpleKingdomGames.Core.Pathfinding.Seekers.AStar.Seek(PurpleKingdomGames.Core.Pathfinding.GridNode2D[0:,0:],PurpleKingdomGames.Core.Point2D,PurpleKingdomGames.Core.Point2D,System.Int32)">
+            <summary>
+            Seek a target in a 2-dimensional grid
+            </summary>
+            <param name="grid">The grid to search</param>
+            <param name="start">The start point to seek from</param>
+            <param name="target">The target to seek to</param>
+            <param name="ascentCost">The additional cost to apply when ascending</param>
+            <returns>An array of points needed to pass through to get to the target</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            If the start or target are out of range of the grid
+            </exception>
+        </member>
+        <member name="M:PurpleKingdomGames.Core.Pathfinding.Seekers.AStar.Seek(PurpleKingdomGames.Core.Pathfinding.GridNode2D[0:,0:],PurpleKingdomGames.Core.Point2D,PurpleKingdomGames.Core.Point2D,System.Boolean,System.Int32)">
+            <summary>
+            Seek a target in a 2-dimensional grid
+            </summary>
+            <param name="grid">The grid to search</param>
+            <param name="start">The start point to seek from</param>
+            <param name="target">The target to seek to</param>
+            <param name="cutCorners">Whether or not to cut a corner</param>
+            <param name="ascentCost">The additional cost to apply when ascending</param>
+            <returns>An array of points needed to pass through to get to the target</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            If the start or target are out of range of the grid
+            </exception>
+        </member>
+        <member name="M:PurpleKingdomGames.Core.Pathfinding.Seekers.AStar.Seek(PurpleKingdomGames.Core.Pathfinding.GridNode2D[0:,0:],PurpleKingdomGames.Core.Point2D,PurpleKingdomGames.Core.Point2D,System.Int32,System.Int32)">
+            <summary>
+            Seek a target in a 2-dimensional grid
+            </summary>
+            <param name="grid">The grid to search</param>
+            <param name="start">The start point to seek from</param>
+            <param name="target">The target to seek to</param>
+            <param name="ascentCost">The additional cost to apply when ascending</param>
+            <param name="descentCost">The additional cost to apply when descending</param>
+            <returns>An array of points needed to pass through to get to the target</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            If the start or target are out of range of the grid
+            </exception>
+        </member>
+        <member name="M:PurpleKingdomGames.Core.Pathfinding.Seekers.AStar.Seek(PurpleKingdomGames.Core.Pathfinding.GridNode2D[0:,0:],PurpleKingdomGames.Core.Point2D,PurpleKingdomGames.Core.Point2D,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Seek a target in a 2-dimensional grid
+            </summary>
+            <param name="grid">The grid to search</param>
+            <param name="start">The start point to seek from</param>
+            <param name="target">The target to seek to</param>
+            <param name="cutCorners">Whether or not to cut a corner</param>
+            <param name="ascentCost">The additional cost to apply when ascending</param>
+            <param name="descentCost">The additional cost to apply when descending</param>
+            <returns>An array of points needed to pass through to get to the target</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            If the start or target are out of range of the grid
+            </exception>
+        </member>
+        <member name="M:PurpleKingdomGames.Core.Pathfinding.Seekers.AStar.Seek(PurpleKingdomGames.Core.Pathfinding.GridNode2D[0:,0:],PurpleKingdomGames.Core.Point2D,PurpleKingdomGames.Core.Point2D,System.Boolean,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Seek a target in a 2-dimensional grid
+            </summary>
+            <param name="grid">The grid to search</param>
+            <param name="start">The start point to seek from</param>
+            <param name="target">The target to seek to</param>
+            <param name="cutCorners">Whether or not to cut a corner</param>
+            <param name="movementCost">The cost to move left/right/up/down from one node to another</param>
+            <param name="diagonalCost">The cost to move in a diagonal from one node to another</param>
+            <param name="ascentCost">The additional cost to apply when ascending</param>
+            <param name="descentCost">The additional cost to apply when descending</param>
+            <returns>An array of points needed to pass through to get to the target</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            If the start or target are out of range of the grid
+            </exception>
+        </member>
+        <member name="M:PurpleKingdomGames.Core.Pathfinding.Seekers.AStar.calculateOpenList(PurpleKingdomGames.Core.Pathfinding.Internal.GridNodeCalc2D,PurpleKingdomGames.Core.Point2D,PurpleKingdomGames.Core.Pathfinding.GridNode2D[0:,0:],PurpleKingdomGames.Core.Pathfinding.Internal.GridNodeHeap2D,System.Collections.Generic.List{PurpleKingdomGames.Core.Pathfinding.GridNode2D},System.Boolean,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Calculates the next set of nodes to add to the open list and adds them
+            </summary>
+            <param name="currentNode">The node we're calculating from</param>
+            <param name="target">The target node</param>
+            <param name="grid">The grid to search</param>
+            <param name="openNodes">The open list to add to</param>
+            <param name="closedNodes">The closed list to check</param>
+            <param name="cutCorners">Whether to cut corners</param>
+            <param name="movementCost">The cost of moving up/down/left/right</param>
+            <param name="diagonalCost">The cost of moving diagonally</param>
+            <param name="ascentCost">The additional cost of ascending</param>
+            <param name="descentCost">The additional cost of descending</param>
+        </member>
+        <member name="M:PurpleKingdomGames.Core.Pathfinding.Seekers.AStar.isCuttingCorner(PurpleKingdomGames.Core.Pathfinding.Internal.GridNodeCalc2D,PurpleKingdomGames.Core.Point2D,PurpleKingdomGames.Core.Pathfinding.GridNode2D[0:,0:])">
+            <summary>
+            Checks to see whether passing to this node would cut a corner
+            </summary>
+            <param name="node">The node to check</param>
+            <param name="currentGridPos">The positio0n we're moving from</param>
+            <param name="grid">The grid</param>
+            <returns></returns>
+        </member>
+        <member name="M:PurpleKingdomGames.Core.Pathfinding.Seekers.AStar.calculateMovementCost(System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Calculates teh cost of a node based on whether it's a diagonal, descent, or ascent
+            </summary>
+            <param name="movementCost">The cost to move</param>
+            <param name="diagonalCost">The cost to move if this is a diagonal</param>
+            <param name="ascendingCost">The additional cost of this is ascending</param>
+            <param name="descendingCost">The additional cost if this is descending</param>
+            <param name="isDiagonal">Whether we should calculate as a diagonal</param>
+            <param name="isAscending">Whether we should calculate as an ascension</param>
+            <param name="isDescending">Whether we should calculate as a descent</param>
+            <returns></returns>
+        </member>
+        <member name="T:PurpleKingdomGames.Core.Point2D">
+            <summary>
+            A single 2-dimensional point in world space
+            </summary>
+        </member>
+        <member name="F:PurpleKingdomGames.Core.Point2D.X">
+            <summary>
+            The X position of this point
+            </summary>
+        </member>
+        <member name="F:PurpleKingdomGames.Core.Point2D.Y">
+            <summary>
+            The Y position of this point
+            </summary>
+        </member>
+        <member name="M:PurpleKingdomGames.Core.Point2D.#ctor(System.Single,System.Single)">
+            <summary>
+            Creates a new point in world space with the co-ordinates supplied
+            </summary>
+            <param name="x">The x position of this point</param>
+            <param name="y">The y position of this point</param>
+        </member>
+        <member name="M:PurpleKingdomGames.Core.Point2D.op_Addition(PurpleKingdomGames.Core.Point2D,PurpleKingdomGames.Core.Point2D)">
+            <summary>
+            Adds 2 points together by adding the X and Y positions
+            </summary>
+            <param name="point1"></param>
+            <param name="point2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PurpleKingdomGames.Core.Point2D.Equals(System.Object)">
+            <summary>
+            Determines if 2 objects are  equal
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PurpleKingdomGames.Core.Point2D.Equals(PurpleKingdomGames.Core.Point2D)">
+            <summary>
+            Determines if 2 points are equal by comparing their X and Y values
+            </summary>
+            <param name="point">The point to compare</param>
+            <returns></returns>
+        </member>
+        <member name="M:PurpleKingdomGames.Core.Point2D.op_Inequality(PurpleKingdomGames.Core.Point2D,PurpleKingdomGames.Core.Point2D)">
+            <summary>
+            etermines whether the two points are different from each other
+            </summary>
+            <param name="point1"></param>
+            <param name="point2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PurpleKingdomGames.Core.Point2D.op_Equality(PurpleKingdomGames.Core.Point2D,PurpleKingdomGames.Core.Point2D)">
+            <summary>
+            Determines if 2 points are equal by comparing their X and Y values
+            </summary>
+            <param name="point1"></param>
+            <param name="point2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PurpleKingdomGames.Core.Point2D.GetHashCode">
+            <summary>
+            Identify an object in a hash-based collection
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PurpleKingdomGames.Test.Core.Collections.BinaryHeapTest.TestAdd">
+            <summary>
+            Test that the 'Add' method works and increments the count
+            </summary>
+        </member>
+        <member name="M:PurpleKingdomGames.Test.Core.Collections.BinaryHeapTest.TestRemove">
+            <summary>
+            Test that the 'Remove' method works correctly
+            </summary>
+        </member>
+        <member name="M:PurpleKingdomGames.Test.Core.Pathfinding.Seekers.AStarTest.TestSeekSimple">
+            <summary>
+            Test that we can seek in 2D without additional options
+            </summary>
+        </member>
+        <member name="M:PurpleKingdomGames.Test.Core.Pathfinding.Seekers.AStarTest.TestSeekComplicated">
+            <summary>
+            Test that we can seek in 2D without cutting corners and with a high descent cost
+            </summary>
+        </member>
+    </members>
+</doc>
