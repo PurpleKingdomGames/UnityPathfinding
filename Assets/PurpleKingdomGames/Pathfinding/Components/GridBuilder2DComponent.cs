@@ -2,7 +2,7 @@
 
 namespace PurpleKingdomGames.Unity.Components
 {
-    public class GridBuilderComponent : MonoBehaviour
+    public class GridBuilder2DComponent : MonoBehaviour
     {
         // Use this for initialization
         private void Start()
