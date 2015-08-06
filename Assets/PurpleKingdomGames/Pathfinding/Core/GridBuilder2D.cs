@@ -49,15 +49,15 @@ namespace PurpleKingdomGames.Unity.Core {
                     Debug.DrawRay(origin, Vector2.right * hitPoint);
 
                     for (float i = 0; i < hitPoint; i += nodeSize) {
-                        returnVal[nodeX, nodeY] = new GridNode2D(new Point2D(xDistance + i, y)) {
-                            Passable = true,
+						returnVal[nodeX, nodeY] = new GridNode2D(new Point2D(origin.x + i, y)) {
+							Passable = true,
                         };
                         nodeX++;
                     }
 
                     // Mark the point it hit as impassable
                     distanceSet += (hitPoint + nodeSize);
-                    if (distanceSet <= xDistance && rayCast.collider == null) {
+                    if (distanceSet < xDistance && rayCast.collider != null) {
                         nodeX++;
                         bool passable = false;
                         int penalty = 0;
@@ -67,8 +67,8 @@ namespace PurpleKingdomGames.Unity.Core {
                             passable = true;
                         }
 
-                        returnVal[nodeX, nodeY] = new GridNode2D(new Point2D(0, y)) {
-                            Passable = passable,
+						returnVal[nodeX, nodeY] = new GridNode2D(new Point2D(bounds.xMin + distanceSet, y)) {
+							Passable = passable,
                             Penalty = penalty
                         };
                     }
