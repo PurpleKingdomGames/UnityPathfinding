@@ -43,21 +43,26 @@ namespace PurpleKingdomGames.Unity.Components
 				Mathf.Ceil (Mathf.Abs(offsetX - target.x) / GridBuilder.NodeSize),
 				Mathf.Ceil (Mathf.Abs(offsetY - target.y) / GridBuilder.NodeSize)
 			);
-
+			
+			string row = "";
 			for (int y = 0; y < GridBuilder.Grid.GetLength(1); y ++) {
-				string row = "";
 				for (int x = 0; x < GridBuilder.Grid.GetLength(0); x++) {
 					if (GridBuilder.Grid[x, y].Passable) {
-						row += "-";
+						if (GridBuilder.Grid[x, y].Penalty > 0) {
+							row += GridBuilder.Grid[x, y].Penalty.ToString();
+						} else {
+							row += "o";
+						}
 					} else {
 						row += "x";
 					}
 				}
 
-				Debug.Log(row);
+				row += "\r\n";
 			}
-
-			//Point2D[] path = AStar.Seek (GridBuilder.Grid, startPoint, endPoint);
+			
+			Debug.Log(row);
+			// Point2D[] path = AStar.Seek (GridBuilder.Grid, startPoint, endPoint);
 			Point2D[] path = null;
 			if (path == null) {
 				return new Vector2[0];
