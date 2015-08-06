@@ -31,7 +31,7 @@ namespace PurpleKingdomGames.Unity.Core {
             GridNode2D[,] returnVal = new GridNode2D[gridX, gridY];
             int nodeY = 0;
 
-            for (float y = bounds.yMin; y < bounds.yMax; y += nodeSize) {
+            for (float y = bounds.yMax; y > bounds.yMin; y -= nodeSize) {
                 // trace ray from left to right
                 float distanceSet = 0;
                 int nodeX = 0;
@@ -49,8 +49,8 @@ namespace PurpleKingdomGames.Unity.Core {
                     Debug.DrawRay(origin, Vector2.right * hitPoint);
 
                     for (float i = 0; i < hitPoint; i += nodeSize) {
-                        returnVal[nodeX, nodeY] = new GridNode2D() {
-                            Passable = true
+                        returnVal[nodeX, nodeY] = new GridNode2D(new Point2D(xDistance + i, y)) {
+                            Passable = true,
                         };
                         nodeX++;
                     }
@@ -67,7 +67,7 @@ namespace PurpleKingdomGames.Unity.Core {
                             passable = true;
                         }
 
-                        returnVal[nodeX, nodeY] = new GridNode2D() {
+                        returnVal[nodeX, nodeY] = new GridNode2D(new Point2D(0, y)) {
                             Passable = passable,
                             Penalty = penalty
                         };
