@@ -44,26 +44,7 @@ namespace PurpleKingdomGames.Unity.Components
 				Mathf.Ceil (Mathf.Abs(offsetY - target.y) / GridBuilder.NodeSize)
 			);
 			
-			string row = "";
-			for (int y = 0; y < GridBuilder.Grid.GetLength(1); y ++) {
-				for (int x = 0; x < GridBuilder.Grid.GetLength(0); x++) {
-					if (GridBuilder.Grid[x, y].Passable) {
-						if (GridBuilder.Grid[x, y].Penalty > 0) {
-							row += GridBuilder.Grid[x, y].Penalty.ToString();
-						} else {
-							row += "o";
-						}
-					} else {
-						row += "x";
-					}
-				}
-
-				row += "\r\n";
-			}
-			
-			Debug.Log(row);
-			// Point2D[] path = AStar.Seek (GridBuilder.Grid, startPoint, endPoint);
-			Point2D[] path = null;
+			Point2D[] path = AStar.Seek (GridBuilder.Grid, startPoint, endPoint);
 			if (path == null) {
 				return new Vector2[0];
 			}
