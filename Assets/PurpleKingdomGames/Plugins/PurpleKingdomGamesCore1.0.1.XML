@@ -253,7 +253,7 @@
             If the start or target are out of range of the grid
             </exception>
         </member>
-        <member name="M:PurpleKingdomGames.Core.Pathfinding.Seekers.AStar.calculateOpenList(PurpleKingdomGames.Core.Pathfinding.Internal.GridNodeCalc2D,PurpleKingdomGames.Core.Point2D,PurpleKingdomGames.Core.Pathfinding.GridNode2D[0:,0:],PurpleKingdomGames.Core.Pathfinding.Internal.GridNodeHeap2D,System.Collections.Generic.List{PurpleKingdomGames.Core.Pathfinding.GridNode2D},System.Boolean,System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:PurpleKingdomGames.Core.Pathfinding.Seekers.AStar.calculateOpenList(PurpleKingdomGames.Core.Pathfinding.Internal.GridNodeCalc2D,PurpleKingdomGames.Core.Point2D,PurpleKingdomGames.Core.Pathfinding.GridNode2D[0:,0:],PurpleKingdomGames.Core.Pathfinding.Internal.GridNodeHeap2D,System.Boolean[0:,0:],System.Boolean,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Calculates the next set of nodes to add to the open list and adds them
             </summary>
@@ -295,12 +295,12 @@
             A single 2-dimensional point in world space
             </summary>
         </member>
-        <member name="F:PurpleKingdomGames.Core.Point2D.X">
+        <member name="P:PurpleKingdomGames.Core.Point2D.X">
             <summary>
             The X position of this point
             </summary>
         </member>
-        <member name="F:PurpleKingdomGames.Core.Point2D.Y">
+        <member name="P:PurpleKingdomGames.Core.Point2D.Y">
             <summary>
             The Y position of this point
             </summary>
@@ -372,6 +372,11 @@
             </summary>
         </member>
         <member name="M:PurpleKingdomGames.Test.Core.Pathfinding.Seekers.AStarTest.TestSeekComplicated">
+            <summary>
+            Test that we can seek in 2D without cutting corners and with a high descent cost
+            </summary>
+        </member>
+        <member name="M:PurpleKingdomGames.Test.Core.Pathfinding.Seekers.AStarTest.TestSeekMedium">
             <summary>
             Test that we can seek in 2D without cutting corners and with a high descent cost
             </summary>
