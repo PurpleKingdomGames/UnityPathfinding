@@ -305,6 +305,26 @@
             The Y position of this point
             </summary>
         </member>
+        <member name="P:PurpleKingdomGames.Core.Point2D.IntX">
+            <summary>
+            The X position of this point expressed as an int
+            </summary>
+        </member>
+        <member name="P:PurpleKingdomGames.Core.Point2D.IntY">
+            <summary>
+            The Y position of this point expressed as an int
+            </summary>
+        </member>
+        <member name="F:PurpleKingdomGames.Core.Point2D._x">
+            <summary>
+            Stores the x position as a float
+            </summary>
+        </member>
+        <member name="F:PurpleKingdomGames.Core.Point2D._y">
+            <summary>
+            Stores the y position as a float
+            </summary>
+        </member>
         <member name="M:PurpleKingdomGames.Core.Point2D.#ctor(System.Single,System.Single)">
             <summary>
             Creates a new point in world space with the co-ordinates supplied
